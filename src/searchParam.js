@@ -12,12 +12,12 @@ const SearchParams = () =>{
     useEffect(() =>{
       setBreeds([]);
       setBreed("");
-      pet.breeds(animal).then(({breeds})=>{
-        const breedString = breeds.map(({name})=>name);
+      pet.breeds(animal).then(({breeds:apiBreeds})=>{
+        const breedString = apiBreeds.map(({name})=>name);
         setBreeds(breedString);
       },console.error)
 
-      },[animal,setBreeds,setBreed]);
+      },[animal,setBreed,setBreeds]);   //pass only [] as a dependency to run effect only once during mounting.
 
   return (
     <div className="search-params">
